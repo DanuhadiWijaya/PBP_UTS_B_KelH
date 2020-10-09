@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Luxury Hotel</string>
+    <string name="mapbox_access_token">pk.eyJ1Ijoibm9pcmVkbiIsImEiOiJja2Zua2k2YW0xbmNvMnFrdW0zc2F0ZTRtIn0.0lctotSlQBLtlPa-0mpD0A</string>
+    <string name="take_photo">Take a photo</string>
+</resources>
