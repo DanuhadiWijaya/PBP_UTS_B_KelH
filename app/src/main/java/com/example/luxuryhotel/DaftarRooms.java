@@ -21,11 +21,10 @@ public class DaftarRooms {
             "1-2", "https://miro.medium.com/max/700/1*zh95I9h9V7f-nbIq8m4RRw.png");
 
     public static final Rooms DIAMONDS_ROOMS = new Rooms("DIAMONDS ROOMS", 7000000,
-            "1-2", "http://www.travellermade.com/wp-content/uploads/2012/07/Fairmont-Beijing_1.png");
+            "1-2", "https://cdn-brilio-net.akamaized.net/community/2018/07/23/12315/15-desain-kamar-tidur-bak-hotel-bintang-5-ini-bisa-jadi-inspirasimu.jpg");
 
     public static final Rooms PREMIUM_ROOMS = new Rooms("PREMIUM ROOMS", 5000000,
-            "1-2", "https://lh3.googleusercontent.com/proxy/5LwPTzbjk0CJcta2hlE5wY-Y7Jim-F6pNQ1Ux-yB5o2aoeDlhVCB6wuf2iNFjfP3zk94jW_ZlH6HaJGOAkzWnC_A7vdW9sDjkHodqHzocdza7MYU3-K8YX9b9mb3xn4m-iB46uo");
-
+            "1-2", "https://i2.wp.com/f1-styx.imgix.net/article/2019/10/15154154/cnn.jpg?fit=2226%2C1449&ssl=1");
     public static final Rooms GOLD_ROOMS = new Rooms("GOLD ROOMS", 3500000,
             "1-2", "https://i.pinimg.com/originals/33/18/14/331814ff790334684abca7a5601fb1ae.png");
 

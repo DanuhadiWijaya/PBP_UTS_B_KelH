@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -333,20 +332,11 @@ public class Location extends AppCompatActivity implements OnMapReadyCallback, P
         inflater.inflate(R.menu.options_menu, menu);
         //getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.Home){
-            startActivity(new Intent(this, MainActivity.class));
-        }else if(item.getItemId()==R.id.Profil_Pemesan){
-            startActivity(new Intent(this, DaftarPemesan.class));
-        }else if(item.getItemId()==R.id.Location){
-            startActivity(new Intent(this, Location.class));
-        }else if(item.getItemId()==R.id.About){
-            startActivity(new Intent(this, About.class));
-        }else if(item.getItemId()==R.id.Profile){
-            startActivity(new Intent(this, Profile.class));
+        if (item.getItemId()==R.id.menu_Home_Page){
+            startActivity(new Intent(this, HomePage.class));
         }
 
         return true;

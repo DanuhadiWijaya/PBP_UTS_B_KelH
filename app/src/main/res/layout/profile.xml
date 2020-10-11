@@ -1,41 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profile_img"
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="300dp"
-        android:src="@drawable/ic_baseline_account_circle_24"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/profile_img"
-        android:orientation="vertical">
+        android:layout_marginTop="50dp"
+        tools:context=".ProfileActivity"
+        android:id="@+id/layoutProfile">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:orientation="vertical"
+            android:layout_margin="10dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/profile_nama"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kelompok H"/>
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
 
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="PROFILE KELOMPOK H"
+                android:textColor="#DA880D"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-    </FrameLayout>
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="296dp"
+                android:layout_height="269dp"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_baseline_account_circle_24"
+                android:layout_gravity="center"/>
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/capture_image_btn"
+                android:text="Capture Image"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama  : "
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvNama"
+                    android:layout_width="299dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="24dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email : "
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="292dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="3dp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username : "
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvUsername"
+                    android:layout_width="215dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
+

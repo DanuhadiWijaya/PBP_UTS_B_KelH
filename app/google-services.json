@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "849043204473",
+    "firebase_url": "https://luxury-hotel-9a830.firebaseio.com",
+    "project_id": "luxury-hotel-9a830",
+    "storage_bucket": "luxury-hotel-9a830.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849043204473:android:3f097456c5d6764c7aa7a8",
+        "android_client_info": {
+          "package_name": "com.example.luxuryhotel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849043204473-knt50uc6nclopar27bhh6dno1kpsecun.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.luxuryhotel",
+            "certificate_hash": "bc219ea8e73f0f672faeb121f0f5ce8a1763e4b0"
+          }
+        },
+        {
+          "client_id": "849043204473-39tvdv79eorq00g5ai3c0seg5tkupn7a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhWopPdGLg1tqsyu3z_9IpkRUA7G3xSZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849043204473-39tvdv79eorq00g5ai3c0seg5tkupn7a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

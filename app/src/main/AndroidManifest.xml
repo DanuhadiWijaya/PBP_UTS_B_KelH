@@ -24,10 +24,13 @@
             android:resource="@xml/file_paths" />
 
         <activity android:name=".MainActivity" />
-        <activity android:name=".DaftarPemesan" />
+        <activity android:name=".PemesananActivity" />
         <activity android:name=".About" />
         <activity android:name=".Profile" />
         <activity android:name=".Location" />
+        <activity android:name=".SignIn"/>
+        <activity android:name=".SignOut"/>
+        <activity android:name=".HomePage"/>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +40,7 @@
         </activity>
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.provider"
+            android:authorities="com.example.luxuryhotel.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

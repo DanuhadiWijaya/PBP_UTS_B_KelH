@@ -4,28 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/Home"
-        android:title="Home"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/Profil_Pemesan"
-        android:title="Daftar Pemesan"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/Location"
-        android:title="Location"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/About"
-        android:title="About"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/Profile"
-        android:title="Profile"
-        app:showAsAction="never"/>
+        android:id="@+id/menu_Home_Page"
+        android:title="Kembali"
+        app:showAsAction="always"/>
 
 </menu>

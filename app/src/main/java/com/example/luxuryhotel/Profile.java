@@ -1,75 +1,226 @@
 package com.example.luxuryhotel;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class Profile extends AppCompatActivity {
+    private String CHANNEL_ID = "Channel 1";
+    private FirebaseAuth authentication;
 
-    ImageView profile;
-    static final int REQUEST_IMAGE_CAPTURE = 1;
-    public static String fileName;
+    private static final int PERMISSION_CODE =1000 ;
+    private static final int IMAGE_CAPTURE_CODE = 1001;
+    Button mCaptureBtn;
+    ImageView mImageView;
+    private SharedPreferences preferences;
+    Uri image_uri;
+    public static final int mode = Activity.MODE_PRIVATE;
 
+    public static final int CAMERA_PERM_CODE = 101;
+    public static final int CAMERA_REQUEST_CODE = 102;
+    public static final int GALLERY_REQUEST_CODE = 105;
+    String currentPhotoPath, photoPath;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.profile);
 
-        profile = findViewById(R.id.profile_img);
-        profile.setOnClickListener(new View.OnClickListener() {
+        loadPreferences();
+
+        mImageView = findViewById(R.id.image_view);
+        mCaptureBtn = findViewById(R.id.capture_image_btn);
+
+
+        TextView nama = findViewById(R.id.tvNama);
+        TextView email = findViewById(R.id.tvEmail);
+        TextView username = findViewById(R.id.tvUsername);
+
+        mImageView.setImageURI(Uri.parse(photoPath));
+
+
+
+        SharedPreferences sp = getApplicationContext().getSharedPreferences("UserHotel", Context.MODE_PRIVATE);
+        String namastring = sp.getString("Nama", "");
+        String emailstring = sp.getString("Email", "");
+        String usernamestring = sp.getString("Username", "");
+
+        nama.setText(namastring);
+        email.setText(emailstring);
+        username.setText(usernamestring);
+
+        mCaptureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                takePicture();
+                checkPermission();
             }
         });
     }
 
-
-    private void takePicture() {
-        Dexter.withActivity(this)
-                .withPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .withListener(new MultiplePermissionsListener() {
-                    @Override
-                    public void onPermissionsChecked(MultiplePermissionsReport report) {
-                        if (report.areAllPermissionsGranted()) {
-                            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
-                        token.continuePermissionRequest();
-                    }
-                }).check();
+    // Function to check and request camera permission.
+    public void checkPermission()
+    {
+        // Checking if permission is not granted
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.CAMERA}, CAMERA_PERM_CODE);
+        }else {
+            dispatchTakePictureIntent();
+        }
     }
 
+    // This function is called when the user accepts or decline the permission.
+    // Request Code is used to check which permission called this function.
+    // This request code is provided when the user is prompt for permission.
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == CAMERA_PERM_CODE){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                dispatchTakePictureIntent();
+            }else {
+                Toast.makeText(this, "Camera Permission is Required to Use camera.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
+    private void loadPreferences() {
+        String name = "profile";
+        preferences = getSharedPreferences(name, mode);
+        if (preferences!=null) {
+            photoPath = preferences.getString("photoPath", "");
+        }
+    }
+
+
+    //Orientasi screen pengguna portrait/landscape
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
+
+    private void savePreferences() {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("photoPath", currentPhotoPath);
+        editor.apply();
+        Toast.makeText(this, "Photo saved", Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @NonNull Intent data) {
+        Toast.makeText(this, "Image Captured", Toast.LENGTH_SHORT).show();
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            profile.setImageBitmap(imageBitmap);
+        if(requestCode == CAMERA_REQUEST_CODE){
+            if(resultCode == Activity.RESULT_OK){
+                File f = new File(currentPhotoPath);
+                mImageView.setImageURI(Uri.fromFile(f));
+                Log.d("tag", "Absolute Url of Image is " + Uri.fromFile(f));
+
+                savePreferences();
+
+                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                Uri contentUri = Uri.fromFile(f);
+                mediaScanIntent.setData(contentUri);
+                this.sendBroadcast(mediaScanIntent);
+            }
+
+        }
+        if(requestCode == GALLERY_REQUEST_CODE){
+            if(resultCode == Activity.RESULT_OK){
+                Uri contentUri = data.getData();
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                String imageFileName = "JPEG_" + timeStamp +"."+getFileExt(contentUri);
+                Log.d("tag", "onActivityResult: Gallery Image Uri:  " +  imageFileName);
+                mImageView.setImageURI(contentUri);
+            }
+
+        }
+    }
+
+    private String getFileExt(Uri contentUri) {
+        ContentResolver c = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(c.getType(contentUri));
+    }
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+//        File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        currentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(this, "com.example.luxuryhotel.fileprovider",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
+            }
         }
     }
 
@@ -80,22 +231,40 @@ public class Profile extends AppCompatActivity {
         inflater.inflate(R.menu.options_menu, menu);
         //getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.Home){
-            startActivity(new Intent(this, MainActivity.class));
-        }else if(item.getItemId()==R.id.Profil_Pemesan){
-            startActivity(new Intent(this, DaftarPemesan.class));
-        }else if(item.getItemId()==R.id.Location){
-            startActivity(new Intent(this, Location.class));
-        }else if(item.getItemId()==R.id.About){
-            startActivity(new Intent(this, About.class));
-        }else if(item.getItemId()==R.id.Profile){
-            startActivity(new Intent(this, Profile.class));
+        if (item.getItemId()==R.id.menu_Home_Page){
+            startActivity(new Intent(this, HomePage.class));
         }
 
         return true;
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Channel 1";
+            String description = "This is Channel 1";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    private void addNotification() {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle("Goodbye")
+                .setContentText("Ooh no now i'm alone in here :(")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        Intent notificationIntent = new Intent(this, SignIn.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
     }
 }
