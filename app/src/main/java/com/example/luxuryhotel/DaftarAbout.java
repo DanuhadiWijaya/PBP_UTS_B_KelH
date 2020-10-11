@@ -13,11 +13,12 @@ public class DaftarAbout {
     }
 
     public static final Abouts DANU = new Abouts("Putu Danuhadi Wijaya", "180709770", "Fakultas Teknologi Industri",
-            "Informatika", "082240441272", "https://vignette.wikia.nocookie.net/upinipin/images/4/4a/1_2_ipin.png/revision/latest?cb=20161210135103");
+            "Informatika", "180709770@students.uajy.ac.id", "https://vignette.wikia.nocookie.net/spongebob/images/a/ac/Spongebobwithglasses.jpeg/revision/latest?cb=20121014113150");
 
     public static final Abouts YOSIA = new Abouts("Yosia Galih Yudhistira", "180709971", "Fakultas Teknologi Industri",
-            "Informatika", "082231241184", "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+            "Informatika", "180709971@students.uajy.ac.id", "https://static.miraheze.org/loathsomecharacterswiki/7/7e/Patrick_Star.png");
 
-    public static final Abouts KEVIN = new Abouts("Kevin Varlet", "170709400", "Fakultas Teknologi Industri", "Informatika", "", "https://www.concrete.com.eg/uploads/1b/eb/summer-2020-men-casual.jpg");
+    public static final Abouts KEVIN = new Abouts("Kevin Varlet", "170709400", "Fakultas Teknologi Industri",
+            "Informatika", "170709400@students.uajy.ac.id", "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/405610ed-0ed8-404b-b733-b0bc5ad9d340/ddhxhn0-0e568ebc-4af0-4493-a894-5f59375fb9db.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNDA1NjEwZWQtMGVkOC00MDRiLWI3MzMtYjBiYzVhZDlkMzQwXC9kZGh4aG4wLTBlNTY4ZWJjLTRhZjAtNDQ5My1hODk0LTVmNTkzNzVmYjlkYi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.Q_jGpc9SQ4U8bOf_S2HRpJGxOlBwocDWenAeeOLuz8I");
 
 }

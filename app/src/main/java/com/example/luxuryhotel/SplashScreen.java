@@ -54,7 +54,7 @@ public class SplashScreen extends AppCompatActivity {
                     editor.putBoolean("firstTime",firstTime);
                     editor.apply();
 
-                    Intent i  = new Intent(SplashScreen.this,SignIn.class);
+                    Intent i  = new Intent(SplashScreen.this,StartActivity.class);
                     startActivity(i);
                     finish();
                 }
@@ -63,7 +63,7 @@ public class SplashScreen extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(SplashScreen.this, SignIn.class);
+                    Intent intent = new Intent(SplashScreen.this, StartActivity.class);
                     startActivity(intent);
                     finish();
                 }

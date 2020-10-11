@@ -19,13 +19,6 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page);
 
-        TextView nama = findViewById(R.id.tvNama);
-
-        SharedPreferences sp = getApplicationContext().getSharedPreferences("UserHotel", Context.MODE_PRIVATE);
-
-        String namastring = sp.getString("Nama", "");
-        nama.setText(namastring);
-
         btnKamar = (RelativeLayout) findViewById(R.id.lihat);
         btnSewa = (RelativeLayout) findViewById(R.id.sewa);
         btnAbout = (RelativeLayout) findViewById(R.id.about);

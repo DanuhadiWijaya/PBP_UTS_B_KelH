@@ -13,7 +13,7 @@ public class Abouts extends About {
     public String contact;
     public String imageURL;
 
-    public Abouts(String nama, String npm, String fakultas, String jurusan, String contact, String imageURLURL) {
+    public Abouts(String nama, String npm, String fakultas, String jurusan, String contact, String imageURL) {
         this.npm = npm;
         this.nama = nama;
         this.fakultas = fakultas;

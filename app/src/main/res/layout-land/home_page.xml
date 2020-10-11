@@ -7,105 +7,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/backgroundappnew"
     tools:context=".HomePage">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Haloo, selamat datang "
-                android:textColor="#000000"
-                android:textSize="20dp"/>
-
-            <TextView
-                android:id="@+id/tvNama"
-                android:layout_width="299dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textColor="#000000"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:clickable="true"
-        app:cardElevation="13dp"
-        app:cardCornerRadius="6dp"
-        android:focusable="true"
-        app:cardBackgroundColor="#FECE2F">
-
-
-        <LinearLayout
-            android:padding="10dp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="cursive"
-                    android:padding="6dp"
-                    android:text="Luxury Hotel "
-                    android:textColor="#000000"
-                    android:textSize="30sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Five Star Hotel In Indonesia"
-                    android:textColor="#000000"
-                    android:fontFamily="casual"
-                    android:textSize="10dp"
-                    android:padding="6dp"
-                    android:textStyle="bold"/>
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="0dp"
-                    android:src="@drawable/hotel2" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="150dp"
         android:layout_marginRight="16dp"
         android:orientation="horizontal"
         android:weightSum="2">
@@ -124,13 +34,14 @@
                 android:id="@+id/lihat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="3dp">
+                android:padding="3dp"
+                android:background="@drawable/background_form">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kamar Hotel"
-                    android:textColor="#5e5e5e"
+                    android:textColor="#ffffff"
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
@@ -159,13 +70,14 @@
                 android:id="@+id/sewa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="3dp">
+                android:padding="3dp"
+                android:background="@drawable/background_form">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sewa"
-                    android:textColor="#5e5e5e"
+                    android:textColor="#ffffff"
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
@@ -205,13 +117,14 @@
                 android:id="@+id/about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="3dp">
+                android:padding="3dp"
+                android:background="@drawable/background_form">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="About Us"
-                    android:textColor="#5e5e5e"
+                    android:textColor="#ffffff"
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
@@ -240,13 +153,14 @@
                 android:id="@+id/profil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="3dp">
+                android:padding="3dp"
+                android:background="@drawable/background_form">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Profil"
-                    android:textColor="#5e5e5e"
+                    android:textColor="#ffffff"
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
@@ -286,13 +200,14 @@
                 android:id="@+id/lokasi_hotel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="3dp">
+                android:padding="3dp"
+                android:background="@drawable/background_form">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Lokasi Hotel"
-                    android:textColor="#5e5e5e"
+                    android:textColor="#ffffff"
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
@@ -321,13 +236,14 @@
                 android:id="@+id/sign_out"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="3dp">
+                android:padding="3dp"
+                android:background="@drawable/background_form">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sign Out"
-                    android:textColor="#5e5e5e"
+                    android:textColor="#ffffff"
                     android:textSize="18dp"
                     android:textStyle="bold" />
 

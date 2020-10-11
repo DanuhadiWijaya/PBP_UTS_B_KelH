@@ -5,14 +5,28 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".SignIn">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="0dp"
+        android:text="Luxury Hotel"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:fontFamily="cursive"
+        android:textSize="56sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="65dp"
         android:text="Username"
+        android:textColor="#000000"
         android:fontFamily="sans-serif-condensed-medium"
         android:textSize="16sp" />
 
@@ -23,6 +37,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginStart="65dp"
         android:ems="10"
+        android:textColor="#000000"
         android:hint="Username"
         android:inputType="text"/>
 
@@ -32,6 +47,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="65dp"
         android:text="Nama"
+        android:textColor="#000000"
         android:fontFamily="sans-serif-condensed-medium"
         android:textSize="16sp" />
 
@@ -42,6 +58,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginStart="65dp"
         android:ems="10"
+        android:textColor="#000000"
         android:hint="Nama Lengkap"
         android:inputType="text"/>
 
@@ -51,6 +68,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="65dp"
         android:text="Email"
+        android:textColor="#000000"
         android:fontFamily="sans-serif-condensed-medium"
         android:textSize="16sp" />
 
@@ -61,6 +79,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginStart="65dp"
         android:ems="10"
+        android:textColor="#000000"
         android:hint="example@gmail.com"
         android:inputType="textEmailAddress"/>
 
@@ -70,6 +89,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="65dp"
         android:text="Password"
+        android:textColor="#000000"
         android:fontFamily="sans-serif-condensed-medium"
         android:textSize="16sp" />
 
@@ -80,6 +100,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginStart="65dp"
         android:ems="10"
+        android:textColor="#000000"
         android:hint="Password"
         android:inputType="textPassword"/>
 
