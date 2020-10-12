@@ -85,9 +85,9 @@ public class Profile extends AppCompatActivity {
 
 
         SharedPreferences sp = getApplicationContext().getSharedPreferences("UserHotel", Context.MODE_PRIVATE);
+        String usernamestring = sp.getString("Username", "");
         String namastring = sp.getString("Nama", "");
         String emailstring = sp.getString("Email", "");
-        String usernamestring = sp.getString("Username", "");
 
         nama.setText(namastring);
         email.setText(emailstring);
