@@ -23,18 +23,15 @@
     <ImageView
         android:layout_width="260dp"
         android:layout_height="194dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
         android:src="@drawable/hotel2" />
 
     <Button
         android:id="@+id/btnSignOut"
+        android:layout_marginTop="20dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
         android:text="SIGN OUT"
         android:textAlignment="center"/>
 </LinearLayout>
