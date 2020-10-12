@@ -20,85 +20,52 @@
         android:fontFamily="cursive"
         android:textSize="56sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="65dp"
-        android:text="Username"
-        android:textColor="#000000"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/editTxtUsername"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="65dp"
+        android:layout_gravity="center_horizontal"
         android:ems="10"
         android:textColor="#000000"
         android:hint="Username"
         android:inputType="text"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="65dp"
-        android:text="Nama"
-        android:textColor="#000000"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:textSize="16sp" />
+
 
     <EditText
         android:id="@+id/editTxtNama"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="65dp"
+        android:layout_gravity="center_horizontal"
         android:ems="10"
         android:textColor="#000000"
         android:hint="Nama Lengkap"
         android:inputType="text"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="65dp"
-        android:text="Email"
-        android:textColor="#000000"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:textSize="16sp" />
+
 
     <EditText
         android:id="@+id/editTxtEmail"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="65dp"
+        android:layout_gravity="center_horizontal"
         android:ems="10"
         android:textColor="#000000"
         android:hint="example@gmail.com"
         android:inputType="textEmailAddress"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="65dp"
-        android:text="Password"
-        android:textColor="#000000"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:textSize="16sp" />
+
 
     <EditText
         android:id="@+id/editTxtPassword"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="65dp"
+        android:layout_gravity="center_horizontal"
         android:ems="10"
         android:textColor="#000000"
         android:hint="Password"
@@ -106,14 +73,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal">
 
         <Button
             android:id="@+id/btnSignUp"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="40dp"
             android:text="SIGN UP"
             android:textAlignment="center" />
 
@@ -121,7 +88,6 @@
             android:id="@+id/btnSignIn"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:layout_marginStart="45dp"
             android:text="SIGN IN"
             android:textAlignment="center"/>
