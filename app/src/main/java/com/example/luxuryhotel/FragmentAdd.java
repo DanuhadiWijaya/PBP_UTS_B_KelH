@@ -31,9 +31,9 @@ public class FragmentAdd extends Fragment {
     TextInputEditText inputNo, inputNama, inputAlamat, inputKamar, inputCheckIn, inputCheckOut;
     Button addBtn, cancelBtn;
     Pemesanan pemesanan;
-    private DatePickerDialog datePickerDialog;
-    private SimpleDateFormat dateFormatter;
-    private TextInputEditText tvDateResult;
+    private DatePickerDialog datePickerDialogCheckIn, datePickerDialogCheckOut;
+    private SimpleDateFormat dateFormatterCheckIn, dateFormatterCheckOut;
+    private TextInputEditText tvDateResultCheckIn, tvDateResultCheckOut;
     AutoCompleteTextView autoCompleteTextView;
 
     public FragmentAdd() {
@@ -57,8 +57,10 @@ public class FragmentAdd extends Fragment {
         autoCompleteTextView.setAdapter(arrayAdapter);
         addBtn = view.findViewById(R.id.btn_add);
         cancelBtn = view.findViewById(R.id.btn_cancel);
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-        tvDateResult = view.findViewById(R.id.input_checkin);
+        dateFormatterCheckIn = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        dateFormatterCheckOut = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        tvDateResultCheckIn = view.findViewById(R.id.input_checkin);
+        tvDateResultCheckOut = view.findViewById(R.id.input_checkout);
 
         pemesanan = new Pemesanan();
 
@@ -75,11 +77,16 @@ public class FragmentAdd extends Fragment {
         final TextInputLayout inputCheckInLayout = view.findViewById(R.id.input_checkin_layout);
         final TextInputLayout inputCheckOutLayout = view.findViewById(R.id.input_checkout_layout);
 
-        tvDateResult.setOnClickListener(new View.OnClickListener() {
+        tvDateResultCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDateDialog();
+                showDateDialogCheckOut();
             }
+        });
+
+        tvDateResultCheckIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {showDateDialogCheckIn();}
         });
 
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -145,9 +152,9 @@ public class FragmentAdd extends Fragment {
         insert.execute();
     }
 
-    private void showDateDialog(){
+    private void showDateDialogCheckIn(){
         Calendar newCalendar = Calendar.getInstance();
-        datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+        datePickerDialogCheckIn = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -155,11 +162,29 @@ public class FragmentAdd extends Fragment {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
 
-                tvDateResult.setText(dateFormatter.format(newDate.getTime()));
+                tvDateResultCheckIn.setText(dateFormatterCheckIn.format(newDate.getTime()));
             }
 
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
-        datePickerDialog.show();
+        datePickerDialogCheckIn.show();
+    }
+
+    private void showDateDialogCheckOut(){
+        Calendar newCalendar = Calendar.getInstance();
+        datePickerDialogCheckOut = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+
+                tvDateResultCheckOut.setText(dateFormatterCheckOut.format(newDate.getTime()));
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+        datePickerDialogCheckOut.show();
     }
 }
